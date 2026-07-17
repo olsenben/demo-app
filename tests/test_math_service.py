@@ -15,3 +15,7 @@ def test_divide_by_zero() -> None:
         assert False, "expected ValueError"
     except ValueError:
         pass
+
+
+def test_multiply():
+    assert multiply(3, 4) == 12
