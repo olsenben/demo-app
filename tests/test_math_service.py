@@ -19,3 +19,7 @@ def test_divide_by_zero() -> None:
 
 def test_multiply() -> None:
     assert multiply(3, 4) == 12
+
+
+def test_6f2_intentional_fail() -> None:
+    assert False, "stage4 intentional test_failure for repair_allowed"
