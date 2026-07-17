@@ -1,4 +1,4 @@
-from demo_app.math_service import add, divide
+from demo_app.math_service import add, divide, multiply
 
 
 def test_add() -> None:
@@ -17,5 +17,5 @@ def test_divide_by_zero() -> None:
         pass
 
 
-def test_multiply():
+def test_multiply() -> None:
     assert multiply(3, 4) == 12
