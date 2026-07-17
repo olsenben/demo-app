@@ -1,0 +1,54 @@
+schema_version: agent-config.v1
+
+activation:
+  require_explicit_activation: true
+  allowed_phrases:
+    - "/agent"
+    - "@agent"
+
+default_limits:
+  max_depth: 1
+  max_child_agents: 2
+  max_parallel_children: 1
+  max_iterations: 6
+  time_budget_seconds: 900
+
+model_runtime:
+  execution_mode: serialized
+  local_3080:
+    max_concurrent_calls: 1
+  local_2070:
+    max_concurrent_calls: 1
+
+commands:
+  inspect:
+    repo_write: false
+    run_tests: false
+    network: false
+  explain:
+    repo_write: false
+    run_tests: false
+  review:
+    repo_write: false
+    run_tests: false
+  plan:
+    repo_write: false
+    create_work_items: true
+  fix:
+    repo_write: true
+    run_tests: true
+
+tests:
+  allowed_commands:
+    - "pytest"
+    - "ruff check ."
+
+paths:
+  protected:
+    - ".agent/**"
+    - ".gitea/workflows/**"
+    - ".env*"
+
+reporting:
+  comment_on_issue: true
+  require_manual_approval: true
