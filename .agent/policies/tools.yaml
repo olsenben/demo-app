@@ -1,0 +1,18 @@
+schema: tool_policy.v2
+
+# Narrowing only — command argv/env/cwd live in ACP config/command_registry.yaml.
+# IDs must exist in the central registry; unknown IDs invalidate the whole file.
+allowed_command_ids:
+  - pytest_narrow
+  - ruff_check
+
+constraints:
+  pytest_narrow:
+    allowed_path_globs:
+      - "tests/**"
+    max_timeout_seconds: 120
+  ruff_check:
+    max_timeout_seconds: 60
+
+deny_freeform_shell: true
+allow_network: false
